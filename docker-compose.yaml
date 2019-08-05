@@ -1,4 +1,4 @@
 version: "3"
 services:
   postgress:
-    image: 'postgress:11.4
+    image: 'postgress:11.4'
