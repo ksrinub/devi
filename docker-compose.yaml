@@ -3,7 +3,7 @@ services:
   postgress:
     image: 'postgres:11.4'
   redis:
-    image: 'redis:5.0.5
+    image: 'redis:5.0.5'
   server:
     build:
       dockerfile: Dockerfile
