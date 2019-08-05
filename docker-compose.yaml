@@ -4,7 +4,14 @@ services:
     image: 'postgres:11.4'
   redis:
     image: 'redis:5.0.5'
-  server:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '4000:80'
+  api:
     build:
       dockerfile: Dockerfile
       context: ./server
@@ -19,3 +26,17 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  worker:
+    build:
+      dockerfile: Dockerfile
+      context: ./worker
+    volumes:
+      - /app/node_modules
+      - ./worker:/app
