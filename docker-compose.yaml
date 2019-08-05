@@ -11,7 +11,7 @@ services:
       context: ./nginx
     ports:
       - '4000:80'
-  api:
+  server:
     build:
       dockerfile: Dockerfile
       context: ./server
